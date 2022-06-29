@@ -1,52 +1,38 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-export default function CreateStayComponent(props) {
+export default function UserProfileComponent(props) {
     const user_id = props.user_id ?? null;
-    const [data, setData] = useState([]);
+    const user_email = props.user_email.email ?? '';
+    const [rooms, setRooms] = useState([]);
+    const stays = []
 
-    const getUsers = async () => {
-        const { data } = await axios.get("/api/users");
-        setData(data);
+    const getRoomsPerUser = async () => {
+        const { data } = await axios.get("/api/userStays/"+user_id);
+
+        data.forEach(user => {
+            setRooms(user.rooms);
+        });
     };
 
+    rooms.map((room,index)=>{
+        stays.push(<li key={index}>Se ha hospedado en la habitación {room.number} del Hotel {room.hotel['name']}</li>)
+    })
+
     useEffect(() => {
-        getUsers();
+        getRoomsPerUser();
     }, []);
 
     return (
         <>
-            <div className="uk-overflow-auto">
-                <table className="uk-table uk-table-middle uk-table-hover uk-table-small">
-                    <thead>
-                        <tr>
-                            <th>Email</th>
-                            <th>Género</th>
-                            <th>Fecha de Nacimiento</th>
-                            <th>Estatus Sentimental</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {data.map((user, index) => (
-                            <tr key={user.id}>
-                                <td>{user.email}</td>
-                                <td>{user.gender}</td>
-                                <td>{user.birth_date}</td>
-                                <td>{user.relationship_status}</td>
-                                <td>
-                                    <div className="uk-margin-small">
-                                        <div className="uk-button-group">
-                                            <button className="uk-button uk-button-primary">Perfil</button>
-                                            <button className="uk-button uk-button-primary">Registrar Visita</button>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+        <div className="uk-card uk-card-default uk-card-body">
+            <h2 className="uk-h2 uk-text-secondary">Perfil del usuario {user_email}</h2>
+            <ul className="uk-list uk-list-striped">
+                {
+                stays
+                }
+            </ul>
+        </div>
         </>
     );
 }

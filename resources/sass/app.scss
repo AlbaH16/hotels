@@ -1,5 +1,10 @@
 // This is how you might override UIkit default variables
+$card-default-background:#DED2BF;;
+$text-secondary-color: #5A5A5A;
 $global-primary-background: #BF995C;
+$global-secondary-background: #DED2BF;
+// $background-default-background: #FFFFFF;
+
 
 @import "../../vendor/uikit/uikit/src/scss/variables-theme.scss";
 @import "../../vendor/uikit/uikit/src/scss/mixins-theme.scss";

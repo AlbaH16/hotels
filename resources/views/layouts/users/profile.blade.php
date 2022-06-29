@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-{{ $user_id }}
+<UserProfileComponent user_id="{{ $user_id  }}" user_email={{ $user_email }} />
 @endsection

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware('auth')->group(function(){
+
     Route::get('/',function(){
         return view('welcome');
     })->name('home');
@@ -24,6 +26,7 @@ Route::middleware('auth')->group(function(){
     })->name('stay.create');
 
     Route::get('perfil-usuario/{user}',function($user){
-        return view('layouts.users.profile',['user_id'=>$user]);
+        $user_email = User::select('email')->where('id',$user)->first();
+        return view('layouts.users.profile',['user_id'=>$user,'user_email'=>$user_email]);
     })->name('user.profile');
 });

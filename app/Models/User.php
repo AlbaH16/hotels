@@ -47,4 +47,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Room::class, 'room_user')->using(RoomUser::class);
     }
+
+    /**
+     * Get all of the stays for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function stays()
+    {
+        return $this->hasMany(RoomUser::class, 'user_id', 'id');
+    }
 }

@@ -37,12 +37,12 @@
                             @guest
                                 @if (Route::has('login'))
                                     <li>
-                                        <a href="{{ route('login') }}">{{ __('Log In') }}</a>
+                                        <a href="{{ route('login') }}">Iniciar Sesión</a>
                                     </li>
                                 @endif
                                 @if (Route::has('register'))
                                     <li>
-                                        <a href="{{ route('register') }}">{{ __('Register') }}</a>
+                                        <a href="{{ route('register') }}">Crear Cuenta</a>
                                     </li>
                                 @endif
                             @else
@@ -55,7 +55,7 @@
                                             <li>
                                                 <a href="{{ route('logout') }}"
                                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                                    {{ __('Log Out') }}
+                                                    Cerrar Sesión
                                                 </a>
 
                                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -78,7 +78,7 @@
         @yield('content')
     </main>
 
-    <footer class="uk-section uk-section-xsmall uk-section-secondary">
+    {{-- <footer class="uk-section uk-section-xsmall uk-section-secondary">
         <div class="uk-container">
             <div class="uk-grid uk-text-center uk-text-left@s uk-flex-middle" data-uk-grid>
                 <div class="uk-text-small uk-text-muted uk-width-1-3@s">
@@ -96,7 +96,7 @@
                 </div>
             </div>
         </div>
-    </footer>
+    </footer> --}}
 </div>
 <script src="{{ asset('js/app.js') }}" defer></script>
 </body>
