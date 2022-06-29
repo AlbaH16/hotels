@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-<ExampleComponent userid="{{ Auth::id() }}" />
+<CreateStayComponent user_id="{{ Auth::id() }}" />
 @endsection

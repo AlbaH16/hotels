@@ -14,7 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::middleware('auth')->group(function(){
+    Route::get('/',function(){
+        return view('welcome');
+    })->name('home');
 
-Route::get('/',function(){
-    return view('welcome');
-})->middleware('auth');
+    Route::get('registrar-visitas',function(){
+        return view('layouts.stays.create');
+    })->name('stay.create');
+});
