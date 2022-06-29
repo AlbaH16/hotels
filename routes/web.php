@@ -19,7 +19,11 @@ Route::middleware('auth')->group(function(){
         return view('welcome');
     })->name('home');
 
-    Route::get('registrar-visitas',function(){
-        return view('layouts.stays.create');
+    Route::get('registrar-visitas/{user}',function($user){
+        return view('layouts.stays.create',['user_id'=>$user]);
     })->name('stay.create');
+
+    Route::get('perfil-usuario/{user}',function($user){
+        return view('layouts.users.profile',['user_id'=>$user]);
+    })->name('user.profile');
 });

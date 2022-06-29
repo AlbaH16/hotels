@@ -19,37 +19,16 @@
             <div class="uk-container">
                 <div class="uk-navbar" data-uk-navbar>
                     <div class="uk-navbar-left">
-                        <a class="uk-navbar-item uk-logo" href="/">{{ config('app.name', 'Laravel') }}</a>
-
+                        <a class="uk-navbar-item uk-logo" href="/">{{ config('app.name', 'Hoteles') }}</a>
                         <ul class="uk-navbar-nav">
-                            <li>
-                                <a href="{{ route('demo') }}">Demo</a>
+                            @auth
+                            {{-- <li>
+                                <a href="{{ route('home') }}">Usuarios</a>
                             </li>
                             <li>
-                                <a href="#">Useful Links</a>
-                                <div class="uk-navbar-dropdown uk-navbar-dropdown-width-3">
-                                    <div class="uk-navbar-dropdown-grid uk-child-width-1-3" data-uk-grid>
-                                        <div>
-                                            <ul class="uk-nav uk-navbar-dropdown-nav">
-                                                <li class="uk-nav-header">Laravel</li>
-                                                @include('laravel-uikit::demo.laravel')
-                                            </ul>
-                                        </div>
-                                        <div>
-                                            <ul class="uk-nav uk-navbar-dropdown-nav">
-                                                <li class="uk-nav-header">UIkit</li>
-                                                @include('laravel-uikit::demo.uikit')
-                                            </ul>
-                                        </div>
-                                        <div>
-                                            <ul class="uk-nav uk-navbar-dropdown-nav">
-                                                <li class="uk-nav-header">Vue.js</li>
-                                                @include('laravel-uikit::demo.vuejs')
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                                <a href="{{ route('user.profile',Auth::id()) }}">Perfil</a>
+                            </li> --}}
+                            @endauth
                         </ul>
                     </div>
                     <div class="uk-navbar-right">

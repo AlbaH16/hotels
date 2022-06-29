@@ -1,23 +1,17 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-export default function CreateStayComponent(props){
-    const user_id = props.user_id ?? null
-    const [data, setData] = useState([]);
+export default function CreateStayComponent(props) {
+    const user_id = props.user_id ?? null;
 
-    const getUsers  = async ()=>{
-        const { data } = await axios.get('/api/users');
-        setData(data);
+
+    function handleForm(){
+        console.log(user_id)
     }
 
-
-    useEffect(()=>{
-        getUsers();
-    },[]);
-
-    return(
+    return (
         <>
-        <h2>{JSON.stringify(data)}</h2>
+            <button onClick={handleForm}>Click</button>
         </>
-    )
+    );
 }

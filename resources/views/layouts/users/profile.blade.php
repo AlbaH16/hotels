@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-<UsersIndexComponent />
+{{ $user_id }}
 @endsection
